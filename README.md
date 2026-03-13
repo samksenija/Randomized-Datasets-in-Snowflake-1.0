@@ -18,3 +18,4 @@ Debit & credit side are simply mirrored, that is first debit side is created and
 <br/>
 ## 2. Randomized Medical General Information Dataset
 ### Hospitals, Patients & Doctors Randomized Dummy Data
+Even although this data is completely randomized, there is combination of `hospital_id`, `patient_id` & `doctor_id` which all function as PRIMARY/FOREIGN KEY, and indeed reference each other.
