@@ -14,5 +14,7 @@ def generate_random_name_and_surname(number_of_records):
             email = person['email']
 
             persons.append((name, surname, email))
+        
+        return persons
     except:
         print('Something went wrong with radnomuser API, unfortunately. Please check.')
