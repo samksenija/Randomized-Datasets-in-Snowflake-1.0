@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS dummy_doctor_infromation (
 --Set variables for data generation
 SET hospital_number_count = (SELECT COUNT("hospital_id") FROM dummy_hospital_infromation);
 SET number_of_rows_to_be_generated = 1000;
+SET doctors_birthdate_start = 1950;
+SET doctors_birthdate_end = 2000;
+SET years_needed_for_graduation = 26;
 
 --Populate the table
 INSERT INTO dummy_doctor_infromation("hospital_id", "first_name", "last_name", "gender", "date_of_birth", "specialization",
@@ -39,9 +42,9 @@ SELECT
     NULL,
     ARRAY_CONSTRUCT('M', 'F')[UNIFORM(0, 1, RANDOM())],
     DATE_FROM_PARTS(
-        UNIFORM(1950, 2000, RANDOM()),
+        UNIFORM($doctors_birthdate_start, $doctors_birthdate_end, RANDOM()),
         UNIFORM(1, 12, RANDOM()),
-        UNIFORM(1, 28, RANDOM())
+        UNIFORM(1, 29, RANDOM())
     ) AS birth_date,
     ARRAY_CONSTRUCT(
         'Cardiology',
@@ -105,7 +108,7 @@ SELECT
     'LIC-' || RANDSTR(6, RANDOM()),
     UNIFORM(0, 999, RANDOM()) || '-' || UNIFORM(100000,999999, RANDOM()),
     NULL,
-    YEAR(CURRENT_DATE()) - YEAR(birth_date) - 26 as experience,
+    YEAR(CURRENT_DATE()) - YEAR(birth_date) - $years_needed_for_graduation as experience,
     CASE 
         WHEN experience >= 0 AND experience < 5 THEN
             ARRAY_CONSTRUCT('Intern', 'Resident')[UNIFORM(0, 1, RANDOM())]
@@ -117,7 +120,7 @@ SELECT
             ARRAY_CONSTRUCT('Full-Time', 'Consultant', 'On-Call')[UNIFORM(0, 2, RANDOM())]
     ELSE NULL END,
     DATE_FROM_PARTS(
-        YEAR(birth_date) + 26,
+        YEAR(birth_date) + $years_needed_for_graduation,
         UNIFORM(1, 12, RANDOM()),
         UNIFORM(1, 28, RANDOM())
     ), 
