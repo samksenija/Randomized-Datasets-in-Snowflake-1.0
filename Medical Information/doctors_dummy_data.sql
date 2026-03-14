@@ -6,7 +6,7 @@ CREATE SCHEMA IF NOT EXISTS schema_for_dummy_data;
 USE SCHEMA schema_for_dummy_data;
 
 --Create dummy doctor information table
-CREATE TABLE IF NOT EXISTS dummy_doctor_infromation (
+CREATE TABLE IF NOT EXISTS dummy_doctor_information (
     "doctor_id" NUMBER(38,0) AUTOINCREMENT START 1 INCREMENT 1 UNIQUE PRIMARY KEY,
     "hospital_id" INTEGER,
      CONSTRAINT fk_hospital_id FOREIGN KEY ("hospital_id") REFERENCES dummy_hospital_infromation ("hospital_id"),
@@ -33,7 +33,7 @@ SET doctors_birthdate_end = 2000;
 SET years_needed_for_graduation = 26;
 
 --Populate the table
-INSERT INTO dummy_doctor_infromation("hospital_id", "first_name", "last_name", "gender", "date_of_birth", "specialization",
+INSERT INTO dummy_doctor_information("hospital_id", "first_name", "last_name", "gender", "date_of_birth", "specialization",
     "department", "license_number", "phone_number", "email", "years_of_experience", "employment_type",
     "registration_date", "status")
 SELECT 
@@ -128,4 +128,4 @@ SELECT
 FROM TABLE(GENERATOR(ROWCOUNT => $number_of_rows_to_be_generated));
 
 --Result
-SELECT * FROM dummy_doctor_infromation;
+SELECT * FROM dummy_doctor_information;
