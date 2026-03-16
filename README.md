@@ -20,6 +20,12 @@ Debit & credit side are simply mirrored, that is first debit side is created and
 ### Hospitals, Patients & Doctors Randomized Dummy Data
 Even although this data is completely randomized, there is combination of `hospital_id`, `patient_id` & `doctor_id` which all function as PRIMARY/FOREIGN KEY, and indeed reference each other.
 <br/>
+Database architecture with column names, and PRIMARY/FOREIGN KEYS is as shown below.
+<br/>
+<p align="center">
+  <img src="dummy_medical_information\medical_info_architecture.png" width="650">
+</p>
+<br/>
 <br/>
 ## 3. Randomized Users Dataset
 This randomized dataset creation includes random user's name, last name & email address.
