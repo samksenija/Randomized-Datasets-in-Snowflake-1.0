@@ -9,6 +9,7 @@ The datasets are designed primarily for testing, training, and development purpo
 <br/>
 <br/>
 All datasets have been created using Snowflake technologies, including Snowflake SQL and Snowpark.
+
 ## 1. Dummy Ledger
 Dummy Ledger is a fully randomized ledger dataset generated using Snowflake SQL. It contains synthetic financial entries and is intended purely for demonstration, testing, or training purposes. All values are randomly generated and do not represent any real financial data.
 <br/> 
@@ -26,7 +27,9 @@ The dataset includes the following columns:
 The debit and credit values are mirrored. First, the debit entries are generated, and the corresponding credit values are created by mirroring those debit amounts.
 <br/>
 <br/>
+
 ## 2. Randomized Medical General Information Dataset
+
 ### Hospitals, Patients, Doctors & Medical Results Randomized Dummy Data
 Although the data in this dataset is completely randomized, the relationships between entities are preserved through the use of `hospital_id`, `patient_id`, and `doctor_id`. These fields function as `PRIMARY KEY` and `FOREIGN KEY` references, ensuring that the tables remain properly linked and maintain a consistent relational structure.
 <br/>
@@ -37,6 +40,16 @@ The database architecture, including the column names and the defined `PRIMARY K
   <img src="dummy_medical_information\medical_info_architecture.png" width="650">
 </p>
 <br/>
+<br/>
+Please keep in mind that for this beta version name, surname and email are populated using dummy user table (section 3), so make sure that that table is created before creating dummy doctor and dummy_patient data.
+<br/>
+<br/>
+The order in which tables should be created is as follows:
+<br/>
+1. Dummy hospital data <br/>
+2. Dummy user data <br/>
+3. Dummy doctor data <br/>
+4. Dummy patient data<br/>
 <br/>
 
 ## 3. Randomized Users Dataset
