@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS dummy_doctor_information (
     "department"  VARCHAR(30),
     "license_number" VARCHAR(10),
     "phone_number" VARCHAR(30),
-    "email" VARCHAR(30),
+    "email" VARCHAR(50),
     "years_of_experience" INTEGER,
     "employment_type" VARCHAR(30),
     "registration_date" DATE,
@@ -126,6 +126,11 @@ SELECT
     ), 
     ARRAY_CONSTRUCT('full-time', 'part-time', 'inactive')[UNIFORM(0, 2, RANDOM())]
 FROM TABLE(GENERATOR(ROWCOUNT => $number_of_rows_to_be_generated));
+
+--Populate name, surname & email using dummy user data table
+UPDATE dummy_doctor_information a
+    SET a."first_name" = b."first_name" , a."last_name" = b."last_name" , a."email" = b."email"
+    FROM dummy_user_data b;
 
 --Result
 SELECT * FROM dummy_doctor_information;
