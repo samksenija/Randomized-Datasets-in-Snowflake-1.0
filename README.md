@@ -34,12 +34,31 @@ The debit and credit values are mirrored. First, the debit entries are generated
 Although the data in this dataset is completely randomized, the relationships between entities are preserved through the use of `hospital_id`, `patient_id`, and `doctor_id`. These fields function as `PRIMARY KEY` and `FOREIGN KEY` references, ensuring that the tables remain properly linked and maintain a consistent relational structure.
 <br/>
 <br/>
+<br/>
+Dummy medical results table consists of following columns:
+<br/>
+ `"patient_id" INTEGER,
+ CONSTRAINT fk_patient_id FOREIGN KEY ("patient_id") REFERENCES dummy_patient_information ("patient_id"),
+ "doctor_id" INTEGER,
+ CONSTRAINT fk_doctor_id FOREIGN KEY ("doctor_id") REFERENCES dummy_doctor_information ("doctor_id"),
+ "visit_id" NUMBER(38,0) AUTOINCREMENT START 1 INCREMENT 1,
+ "test_date" DATE,
+ "test_name" VARCHAR(100),
+ "test_type" VARCHAR(30),
+ "test_result" FLOAT,
+ "unit" VARCHAR(15),
+ "reference_range_low" FLOAT,
+ "reference_range_high" FLOAT,
+ "result_flag" VARCHAR(20),
+ "lab_id" INTEGER,
+ "notes" VARCHAR(150)`
+<br/>
+<br/>
 The database architecture, including the column names and the defined `PRIMARY KEY` and `FOREIGN KEY` relationships, is illustrated below.
 <br/>
 <p align="center">
   <img src="dummy_medical_information\medical_info_architecture.png" width="650">
 </p>
-<br/>
 <br/>
 Please note that in this beta version, the name, surname, and email fields are populated from the dummy user table (see section 3). Ensure that this table is created before adding any dummy doctor or patient data.
 <br/>
