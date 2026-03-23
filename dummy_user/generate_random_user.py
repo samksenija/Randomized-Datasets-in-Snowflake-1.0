@@ -7,13 +7,17 @@ def generate_random_name_and_surname(number_of_records):
         data = response.json()
 
         persons = []
+        i = number_of_records
 
         for person in data['results']:
+            user_id = i
             name = person['name']['first']
             surname = person['name']['last']
             email = person['email']
 
-            persons.append([name, surname, email])
+            i -= 1
+
+            persons.append([user_id, name, surname, email])
         
         return persons
     except:
