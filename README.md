@@ -73,10 +73,12 @@ The order in which tables should be created is as follows:
 <br/>
 
 ## 3. Randomized Users Dataset
-This randomized dataset generates synthetic user information, including first name, last name, and email address:
+This randomized dataset generates synthetic user information, including user_id, first name, last name, and email address:
 <br/> 
 <br/>
-`"first_name" VARCHAR(30),
+`
+"user_id" INTEGER,
+"first_name" VARCHAR(30),
   "last_name" VARCHAR(30),
   "email" VARCHAR(30)`
 <br/>
